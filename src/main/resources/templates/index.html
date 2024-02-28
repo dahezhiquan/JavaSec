@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="~{commons/commons::head}"></div>
+
+<body>
+<!-- 顶部导航栏 -->
+<div th:replace="~{commons/commons::topbar}"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- 侧边栏 -->
+        <div th:replace="~{commons/commons::siderbar}"></div>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            <hr>
+            <div class="jumbotron">
+                <h1 class="display-4">JavaSec</h1>
+                <p class="lead">基于SpringMVC的Java安全编码和代码审计演示平台</p>
+                <p class="lead"><b>没有网络安全就没有国家安全</b></p>
+                <hr class="my-4">
+                <a class="btn btn-primary btn-lg" target="_blank"
+                   href="https://blog.csdn.net/gherbirthday0916/category_11907514.html" role="button">代码安全专栏</a>
+                <a class="btn btn-success btn-lg" target="_blank"
+                   href="https://blog.csdn.net/gherbirthday0916/category_12178738.html"
+                   role="button">渗透测试工具专栏</a>
+                <a class="btn btn-warning btn-lg" target="_blank"
+                   href="https://blog.csdn.net/gherbirthday0916/category_11830576.html"
+                   role="button">渗透测试面试专栏</a>
+                <a class="btn btn-info btn-lg" target="_blank" href="https://blog.csdn.net/Gherbirthday0916?type=blog"
+                   role="button">Blog</a>
+                <a class="btn btn-primary btn-lg" target="_blank" href="https://github.com/dahezhiquan/JavaSec"
+                   role="button" style="float:right;">了解更多</a>
+            </div>
+        </main>
+    </div>
+</div>
+
+<!-- 引入script -->
+<div th:replace="~{commons/commons::script}"></div>
+
+
+</body>
+</html>
