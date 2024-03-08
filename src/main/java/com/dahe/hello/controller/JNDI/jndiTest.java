@@ -5,7 +5,7 @@ import javax.naming.InitialContext;
 
 public class jndiTest {
     public static void main(String[] args) throws Exception {
-        String string = "rmi://localhost:1099/hello";
+        String string = "rmi://localhost:1099/calc";
         InitialContext initialContext = new InitialContext();
         initialContext.lookup(string);
     }

