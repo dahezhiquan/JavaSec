@@ -44,8 +44,8 @@ public class JNDIInject {
     }
 
     /**
-     * lookup 方法会将传入的参数当作 JNDI 名称，如果参数值包含恶意的 JNDI 名称，那么攻击者就可以通过这种方式来执行任意的 JNDI 操作。
-     * lookup：通过名字检索执行的对象，当lookup()方法的参数可控时，攻击者便能提供一个恶意的url地址来加载恶意类。
+     * lookup 方法会将传入的参数当作 JNDI 名称，如果参数值包含恶意的 JNDI 名称，那么攻击者就可以通过这种方式来执行任意的 JNDI 操作
+     * lookup：通过名字检索执行的对象，当lookup()方法的参数可控时，攻击者便能提供一个恶意的url地址来加载恶意类
      * PoC http://127.0.0.1:8888/JNDI/vul?content=rmi://127.0.0.1:1099/hello
      */
     @ApiOperation(value = "vul：JNDI注入")

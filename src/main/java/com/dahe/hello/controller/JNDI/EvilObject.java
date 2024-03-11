@@ -4,6 +4,9 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+/**
+ * 恶意类
+ */
 public class EvilObject {
     public EvilObject() throws Exception {
         // 打开计算器
